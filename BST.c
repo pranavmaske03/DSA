@@ -67,10 +67,12 @@ void Preorder(PNODE Head)
 
 void Postorder(PNODE Head)
 {
+    int static iCnt = 0;
+   // printf("Stack fram no : %d\n",++iCnt);
     if(Head != NULL)
     {
-        Preorder(Head->lchild);
-        Preorder(Head->rchild);
+        Postorder(Head->lchild);
+        Postorder(Head->rchild);
         printf("%d\t",Head->data);
     }
 }
@@ -163,22 +165,22 @@ int main()
     PNODE first = NULL;
     bool bRet = false;
 
-    Insert(&first,21);
-    Insert(&first,23);
-    Insert(&first,15);
-    Insert(&first,78);
-    Insert(&first,45);
+    Insert(&first,50);
+    Insert(&first,25);
     Insert(&first,10);
-    Insert(&first,90);
+    Insert(&first,30);
+    Insert(&first,75);
+    Insert(&first,60);
+    Insert(&first,80);
 
     printf("\nElements in preorder are :\n");
-    Preorder(first);
+   // Preorder(first);
 
     printf("\nElements in Postorder are : \n");
     Postorder(first);
 
     printf("\nElements in Inorder are : \n");
-    Inorder(first);
+    //Inorder(first);
 
     bRet = Search(first,78);
     if(bRet == true)
